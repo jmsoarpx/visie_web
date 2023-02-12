@@ -14,30 +14,28 @@ export default function Card(props) {
             </figure>
          </div>
          <div className="card-content p-2">
-            <div className="content">
-               <div className="columns is-mobile is-gapless mb-1">
-                  <div className="column is8 title-size">
-                     <h1 className="title is-7 has-text-left has-text-weight-bold">{product?.title}</h1>
-                  </div>
-                  <div className="column is-4">
-                     <p className="title is-7 has-text-right has-text-weight-bold">
-                        {product?.price?.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
-                     </p>
-                  </div>
+            <div className="columns is-mobile is-gapless mb-1">
+               <div className="column is8 title-size">
+                  <h1 className="title is-7 has-text-left has-text-weight-bold">{product?.title}</h1>
                </div>
-               <p className="subtitle is-7 has-text-grey has-text-weight-semibold">{product?.brand}</p>
-               <div className="columns is-mobile is-gapless is-vcentered">
-                  <div className="column is-6">
-                     <Rating
-                        initialRating={product?.rating}
-                        emptySymbol={<AiOutlineStar color="green" fontWeight="bold" size={23} />}
-                        fullSymbol={<AiFillStar color="green" fontWeight="bold" size={23} />}
-                        readonly
-                     />
-                  </div>
-                  <div className="column">
-                     <p className="subtitle is-7 has-text-left has-text-grey has-text-weight-semibold">({product?.rating})</p>
-                  </div>
+               <div className="column is-4">
+                  <p className="title is-7 has-text-right has-text-weight-bold">
+                     {product?.price?.toLocaleString("pt-br", { style: "currency", currency: "BRL" })}
+                  </p>
+               </div>
+            </div>
+            <p className="subtitle is-7 has-text-grey has-text-weight-semibold mb-2">{product?.brand}</p>
+            <div className="columns is-mobile is-gapless is-vcentered">
+               <div className="column is-6">
+                  <Rating
+                     initialRating={product?.rating}
+                     emptySymbol={<AiOutlineStar color="green" fontWeight="bold" size={23} />}
+                     fullSymbol={<AiFillStar color="green" fontWeight="bold" size={23} />}
+                     readonly
+                  />
+               </div>
+               <div className="column">
+                  <p className="subtitle is-7 has-text-left has-text-grey has-text-weight-semibold">({product?.rating})</p>
                </div>
             </div>
          </div>
