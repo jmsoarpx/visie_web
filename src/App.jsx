@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import Card from "./components/card";
+
+import "./app.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+   const [products, setProducts] = useState([]);
+   const [isloading, setIsloading] = useState(true);
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+   useEffect(() => {
+      getProducts();
+   }, []);
+
+   useEffect(() => {
+      if (products.length > 1) setIsloading(false);
+   }, [products]);
+
+   const getProducts = () => {
+      fetch("https://dummyjson.com/products?limit=50")
+         .then((resp) => resp.json())
+         .then((resp) => {
+            setProducts(resp.products);
+         });
+   };
+
+   return (
+      <div className="mt-2">
+         <p className="title is-5">Itens Similares que você parece gostar</p>
+         <div className="columns is-mobile is-multiline is-centered">
+            {products?.map((product) => (
+               <div className="column is-narrow" key={product.title}>
+                  <Card product={product} />
+               </div>
+            ))}
+         </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+   );
 }
 
-export default App
+export default App;
