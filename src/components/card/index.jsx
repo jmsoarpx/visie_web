@@ -5,7 +5,6 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 export default function Card(props) {
    const { product } = props;
    const defaltUrlImage = "https://bulma.io/images/placeholders/1280x960.png";
-   //    const { product } = product;
    return (
       <div className="card card-size" key={product.id}>
          <div className="card-image">
