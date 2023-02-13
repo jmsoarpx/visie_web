@@ -48,7 +48,6 @@ function App() {
                <img className="image is-3by1 pt-0" src={Banner} alt="" />
             </div>
          </section>
-         <p className="title is-5">Itens Similares que você parece gostar</p>
          <div className="tabs is-small is-centered is-mobile">
             <ul>
                <li className={category === "all" ? "is-active" : ""} onClick={() => getProducts()}>
